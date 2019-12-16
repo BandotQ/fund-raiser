@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Fund raise",
+    "version": "1.0",
+    "description": "Raising funds for a given event"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/fund-raisers": {
+      "get": {
+        "summary": "/fund-raisers/{fundraiserReference}",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "get-fund-raiser"
+      },
+      "post": {
+        "summary": "/fund-raisers",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "post-fund-raiser"
+      },
+      "put": {
+        "summary": "/fund-raisers/{fundraiserReference}",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "put-fund-raiser"
+      },
+      "parameters": []
+    },
+    "/fund-raisers/{fundraiserReference}/collection": {
+      "get": {
+        "summary": "/fund-raisers/{fundraiserReference}/collection",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "get-fund-raiser-collection",
+        "description": ""
+      },
+      "put": {
+        "summary": "/fund-raisers/{fundraiserReference}/collection",
+        "tags": [],
+        "responses": {},
+        "operationId": "put-fund-raiser-collection"
+      },
+      "post": {
+        "summary": "/fund-raisers/{fundraiserReference}/collection",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-fund-raiser-collection"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "fundraiserReference",
+          "in": "path",
+          "required": true
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "fundRaiser": {
+        "title": "fundRaiser",
+        "type": "object",
+        "description": "fund raiser model",
+        "x-tags": [
+          "fundraiser"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string",
+            "example": "Contribution towards fee",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "avatarId": {
+            "type": "integer"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "description": "unique reference number of the fundraise"
+          },
+          "createdBy": {
+            "type": "string",
+            "example": "thomas@gmail.com",
+            "minLength": 1,
+            "maxLength": 30,
+            "description": "email address of the creator"
+          },
+          "targetAmount": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 15,
+            "description": "amount to be collected"
+          },
+          "collectedAmount": {
+            "type": "number",
+            "default": 0,
+            "minimum": 1,
+            "maximum": 15,
+            "description": "amount collected so far"
+          },
+          "fundraiserLink": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300,
+            "description": "fundraiser deep link"
+          },
+          "allowPledge": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300,
+            "description": "the reason for the fundraise"
+          },
+          "status": {
+            "type": "string",
+            "default": "open",
+            "example": "open/closed"
+          },
+          "dateDue": {
+            "type": "integer"
+          },
+          "dateCreated": {
+            "type": "integer"
+          },
+          "dateUpdated": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "reference",
+          "createdBy",
+          "targetAmount",
+          "collectedAmount",
+          "fundraiserLink",
+          "description",
+          "status"
+        ]
+      },
+      "fundRaiserCollections": {
+        "title": "fundRaiserCollections",
+        "type": "object",
+        "description": "collection for fund raise",
+        "x-tags": [
+          "fundraiser"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "fundraiserId": {
+            "description": "the fund raiser reference number/id",
+            "type": "integer"
+          },
+          "collectionFrom": {
+            "type": "integer",
+            "description": "unique id of contributor",
+            "example": "thomas@gmail.com"
+          },
+          "amountCollected": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "status": {
+            "type": "string",
+            "default": "paid",
+            "minLength": 1,
+            "maxLength": 10,
+            "description": "payment or pledge"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 300,
+            "description": "details of the reason for collection"
+          },
+          "dateCreated": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "fundraiserId",
+          "collectionFrom",
+          "amountCollected",
+          "status",
+          "dateCreated"
+        ],
+        "x-examples": {}
+      },
+      "fundRaiserTransactions": {
+        "title": "fundRaiserTransactions",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "collectionId": {
+            "type": "integer"
+          },
+          "transactionReference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "amountPaid": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "description": "cancelled or completed"
+          },
+          "dateCreated": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "collectionId",
+          "transactionReference",
+          "amountPaid",
+          "status",
+          "dateCreated"
+        ]
+      }
+    }
+  }
+}
