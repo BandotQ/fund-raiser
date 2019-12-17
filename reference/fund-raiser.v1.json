@@ -410,34 +410,6 @@
         }
       },
       "parameters": []
-    },
-    "/fund-raisers/{transactionId}": {
-      "parameters": [
-        {
-          "type": "string",
-          "name": "transactionId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "get": {
-        "summary": "/fund-raisers/{collectionId}/transactions",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-fund-raisers-{transactionId}"
-      },
-      "put": {
-        "summary": "/fund-raisers/{collectionId}/transactions",
-        "tags": [],
-        "responses": {},
-        "operationId": "put-fund-raisers-{transactionId}"
-      },
-      "post": {
-        "summary": "/fund-raisers/{collectionId}/tracnsactions",
-        "tags": [],
-        "responses": {},
-        "operationId": "post-fund-raisers-{transactionId}"
-      }
     }
   },
   "components": {
@@ -582,41 +554,6 @@
           "fundraiserId",
           "collectionFrom",
           "amountCollected",
-          "status",
-          "dateCreated"
-        ]
-      },
-      "fundRaiserTransactions": {
-        "title": "fundRaiserTransactions",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "collectionId": {
-            "type": "integer"
-          },
-          "transactionReference": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 50
-          },
-          "amountPaid": {
-            "type": "number"
-          },
-          "status": {
-            "type": "string",
-            "description": "cancelled or completed"
-          },
-          "dateCreated": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "id",
-          "collectionId",
-          "transactionReference",
-          "amountPaid",
           "status",
           "dateCreated"
         ]
