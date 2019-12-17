@@ -11,33 +11,6 @@
     }
   ],
   "paths": {
-    "/fund-raisers": {
-      "get": {
-        "summary": "/fund-raisers/{fundraiserReference}",
-        "tags": [
-          "fundraiser"
-        ],
-        "responses": {},
-        "operationId": "get-fund-raiser"
-      },
-      "post": {
-        "summary": "/fund-raisers",
-        "tags": [
-          "fundraiser"
-        ],
-        "responses": {},
-        "operationId": "post-fund-raiser"
-      },
-      "put": {
-        "summary": "/fund-raisers/{fundraiserReference}",
-        "tags": [
-          "fundraiser"
-        ],
-        "responses": {},
-        "operationId": "put-fund-raiser"
-      },
-      "parameters": []
-    },
     "/fund-raisers/{fundraiserReference}/collection": {
       "get": {
         "summary": "/fund-raisers/{fundraiserReference}/collection",
@@ -52,7 +25,8 @@
         "summary": "/fund-raisers/{fundraiserReference}/collection",
         "tags": [],
         "responses": {},
-        "operationId": "put-fund-raiser-collection"
+        "operationId": "put-fund-raiser-collection",
+        "description": ""
       },
       "post": {
         "summary": "/fund-raisers/{fundraiserReference}/collection",
@@ -70,6 +44,113 @@
           "required": true
         }
       ]
+    },
+    "/fund-raisers": {
+      "get": {
+        "summary": "/fund-raisers/{fundraiserReference}",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "get-fund-raiser"
+      },
+      "post": {
+        "summary": "/fund-raisers",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 11,
+                      "avatarId": 17,
+                      "name": "Bank name",
+                      "website": "www.equity.co.ke",
+                      "swiftCode": null,
+                      "bankCode": null,
+                      "dateCreated": 1518201524,
+                      "dateUpdated": 1518201524,
+                      "avatar": {
+                        "id": 17,
+                        "url": null,
+                        "dateCreated": 1518201524,
+                        "dateUpdated": 1518201524
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-fund-raisers",
+        "description": "Creating a new fund raiser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "targetAmount": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Request body data"
+        }
+      },
+      "put": {
+        "summary": "/fund-raisers/{fundraiserReference}",
+        "tags": [
+          "fundraiser"
+        ],
+        "responses": {},
+        "operationId": "put-fund-raiser"
+      },
+      "parameters": []
+    },
+    "/fund-raisers/{transactionId}": {
+      "parameters": [
+        {
+          "type": "string",
+          "name": "transactionId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "/fund-raisers/{collectionId}/transactions",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-fund-raisers-{transactionId}"
+      },
+      "put": {
+        "summary": "/fund-raisers/{collectionId}/transactions",
+        "tags": [],
+        "responses": {},
+        "operationId": "put-fund-raisers-{transactionId}"
+      },
+      "post": {
+        "summary": "/fund-raisers/{collectionId}/tracnsactions",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-fund-raisers-{transactionId}"
+      }
     }
   },
   "components": {
@@ -89,7 +170,8 @@
             "type": "string",
             "example": "Contribution towards fee",
             "minLength": 1,
-            "maxLength": 50
+            "maxLength": 50,
+            "description": "fund raiser title"
           },
           "avatarId": {
             "type": "integer"
@@ -101,11 +183,10 @@
             "description": "unique reference number of the fundraise"
           },
           "createdBy": {
-            "type": "string",
-            "example": "thomas@gmail.com",
-            "minLength": 1,
-            "maxLength": 30,
-            "description": "email address of the creator"
+            "type": "integer",
+            "description": "unique user id of the creator",
+            "minimum": 1,
+            "maximum": 15
           },
           "targetAmount": {
             "type": "number",
@@ -253,6 +334,12 @@
           "status",
           "dateCreated"
         ]
+      }
+    },
+    "securitySchemes": {
+      "API Key - 1": {
+        "type": "http",
+        "scheme": "Bearer"
       }
     }
   }
