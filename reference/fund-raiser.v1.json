@@ -17,22 +17,147 @@
         "tags": [
           "fundraiser"
         ],
-        "responses": {},
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 15,
+                      "fundraiserId": 15,
+                      "collectionFrom": 23,
+                      "amountCollected": 2000,
+                      "status": "pledge",
+                      "description": "details of the reason for collection",
+                      "dateCreated": 2014211124
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "operationId": "get-fund-raiser-collection",
-        "description": ""
+        "description": "Funds collected for fund raisers",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fundraiserId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       },
       "put": {
         "summary": "/fund-raisers/{fundraiserReference}/collection",
         "tags": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 15,
+                      "fundraiserId": 15,
+                      "collectionFrom": 23,
+                      "amountCollected": 3000,
+                      "status": "pledge",
+                      "description": "details of the reason for collection",
+                      "dateCreated": 2014211124
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "operationId": "put-fund-raiser-collection",
-        "description": ""
+        "description": "Update collection data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fundraiserId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "post": {
         "summary": "/fund-raisers/{fundraiserReference}/collection",
         "tags": [],
-        "responses": {},
-        "operationId": "post-fund-raiser-collection"
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 15,
+                      "fundraiserId": 15,
+                      "collectionFrom": 23,
+                      "amountCollected": 2000,
+                      "status": "pledge",
+                      "description": "details of the reason for collection",
+                      "dateCreated": 2014211124
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "post-fund-raiser-collection",
+        "description": "Adding contriution to a fundraise",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amountCollected": {
+                    "type": "number"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "parameters": [
         {
@@ -51,8 +176,99 @@
         "tags": [
           "fundraiser"
         ],
-        "responses": {},
-        "operationId": "get-fund-raiser"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 13,
+                      "title": "Contribution towards fee",
+                      "avatarId": 23,
+                      "reference": "REF-2527255879310",
+                      "createdBy": 18,
+                      "targetAmount": 20000,
+                      "collectedAmount": 0,
+                      "fundraiserLink": "https://ban-q.com?r=sGsvsF168sdfssdf",
+                      "allowPledge": true,
+                      "description": "the reason for the fundraise",
+                      "status": "open",
+                      "dateDue": 1518201524,
+                      "dateCreated": 1518201524,
+                      "dateUpdated": 1518201524,
+                      "avatar": {
+                        "id": 23,
+                        "url": null,
+                        "dateCreated": 1518201524,
+                        "dateUpdated": 1518201524
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 13,
+                      "title": "Contribution towards fee",
+                      "avatarId": 23,
+                      "reference": "REF-2527255879310",
+                      "createdBy": 18,
+                      "targetAmount": 20000,
+                      "collectedAmount": 0,
+                      "fundraiserLink": "https://ban-q.com?r=sGsvsF168sdfssdf",
+                      "allowPledge": true,
+                      "description": "the reason for the fundraise",
+                      "status": "open",
+                      "dateDue": 1518201524,
+                      "dateCreated": 1518201524,
+                      "dateUpdated": 1518201524,
+                      "avatar": {
+                        "id": 23,
+                        "url": null,
+                        "dateCreated": 1518201524,
+                        "dateUpdated": 1518201524
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-fund-raiser",
+        "description": "Get a specific fund raise",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fundraiserId": {
+                    "type": "integer",
+                    "description": "optional"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
       },
       "post": {
         "summary": "/fund-raisers",
@@ -72,16 +288,22 @@
                 "examples": {
                   "example": {
                     "value": {
-                      "id": 11,
-                      "avatarId": 17,
-                      "name": "Bank name",
-                      "website": "www.equity.co.ke",
-                      "swiftCode": null,
-                      "bankCode": null,
+                      "id": 13,
+                      "title": "Contribution towards fee",
+                      "avatarId": 23,
+                      "reference": "REF-2527255879310",
+                      "createdBy": 18,
+                      "targetAmount": 20000,
+                      "collectedAmount": 0,
+                      "fundraiserLink": "https://ban-q.com?r=sGsvsF168sdfssdf",
+                      "allowPledge": true,
+                      "description": "the reason for the fundraise",
+                      "status": "open",
+                      "dateDue": 1518201524,
                       "dateCreated": 1518201524,
                       "dateUpdated": 1518201524,
                       "avatar": {
-                        "id": 17,
+                        "id": 23,
                         "url": null,
                         "dateCreated": 1518201524,
                         "dateUpdated": 1518201524
@@ -105,7 +327,16 @@
                     "type": "string"
                   },
                   "targetAmount": {
-                    "type": "string"
+                    "type": "number"
+                  },
+                  "allowPledge": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
                   }
                 }
               }
@@ -119,8 +350,64 @@
         "tags": [
           "fundraiser"
         ],
-        "responses": {},
-        "operationId": "put-fund-raiser"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 13,
+                      "title": "Contribution towards fee balance",
+                      "avatarId": 23,
+                      "reference": "REF-2527255879310",
+                      "createdBy": 18,
+                      "targetAmount": 20000,
+                      "collectedAmount": 0,
+                      "fundraiserLink": "https://ban-q.com?r=sGsvsF168sdfssdf",
+                      "allowPledge": true,
+                      "description": "the reason for the fundraise",
+                      "status": "open",
+                      "dateDue": 1518291524,
+                      "dateCreated": 1518292124,
+                      "dateUpdated": 1518201524
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "put-fund-raiser",
+        "description": "Update fund raiser data",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "targetAmount": {
+                    "type": "number"
+                  },
+                  "allowPledge": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "parameters": []
     },
@@ -250,6 +537,7 @@
         "x-tags": [
           "fundraiser"
         ],
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "integer",
@@ -262,8 +550,7 @@
           },
           "collectionFrom": {
             "type": "integer",
-            "description": "unique id of contributor",
-            "example": "thomas@gmail.com"
+            "description": "unique id of contributor"
           },
           "amountCollected": {
             "type": "number",
@@ -297,8 +584,7 @@
           "amountCollected",
           "status",
           "dateCreated"
-        ],
-        "x-examples": {}
+        ]
       },
       "fundRaiserTransactions": {
         "title": "fundRaiserTransactions",
