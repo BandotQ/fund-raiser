@@ -55,6 +55,15 @@
  */
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
+
+	require __DIR__ . '/vendor/autoload.php';
+
+	//Load environment
+	use Symfony\Component\Dotenv\Dotenv;
+
+	$dotenv = new Dotenv();
+	$dotenv->load(__DIR__.'/.env');
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -313,3 +322,5 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+
+
