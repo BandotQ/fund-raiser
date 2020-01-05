@@ -8,7 +8,7 @@ use Symfony\Component\Dotenv\Dotenv;
 /**
  * 
  */
-class EntityManageLibrary
+class EntityManageService
 {
 	
 	function __construct()

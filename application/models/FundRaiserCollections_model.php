@@ -49,14 +49,14 @@ class fundRaiserCollections
     protected $description;
 
     /**
-     * @Column(type="datetimetz", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-     * @var datetimetz
+     * @Column(type="integer")
+     * @var int
      */
     protected $dateCreated;
 
     /**
-     * @Column(type="datetimetz", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
-     * @var datetimetz
+     * @Column(type="integer")
+     * @var int
      */
     protected $dateUpdated;
 
@@ -165,7 +165,7 @@ class fundRaiserCollections
     }
 
     /**
-     * @return datetime
+     * @return int
      */
     public function getDateCreated()
     {
@@ -173,7 +173,7 @@ class fundRaiserCollections
     }
 
     /**
-     * @param datetime $dateCreated
+     * @param int $dateCreated
      */
     public function setDateCreated($dateCreated)
     {
@@ -181,7 +181,7 @@ class fundRaiserCollections
     }
 
     /**
-     * @return datetime
+     * @return int
      */
     public function getDateUpdated()
     {
@@ -189,7 +189,7 @@ class fundRaiserCollections
     }
 
     /**
-     * @param datetime $dateUpdated
+     * @param int $dateUpdated
      */
     public function setDateUpdated($dateUpdated)
     {

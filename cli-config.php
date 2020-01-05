@@ -1,11 +1,11 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/application/libraries/EntityManageLibrary.php';
+require __DIR__ . '/application/libraries/services/EntityManageService.php';
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-	$emManager = new EntityManageLibrary;
+	$emManager = new EntityManageService;
 	$entityManager = $emManager->createEntityManager();
 
 	return ConsoleRunner::createHelperSet($entityManager);

@@ -3,7 +3,7 @@
 /**
  * @Entity @Table(name="fundRaiser")
  */
-class fundRaiser
+class fundRaiser_model
 {
 
     /**
@@ -73,20 +73,20 @@ class fundRaiser
     protected $status = 'open';
 
     /**
-     * @Column(type="datetimetz")
-     * @var datetimetz
+     * @Column(type="integer")
+     * @var int
      */
     protected $dateDue;
 
     /**
-     * @Column(type="datetimetz", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-     * @var datetimetz
+     * @Column(type="integer")
+     * @var int
      */
     protected $dateCreated;
 
     /**
-     * @Column(type="datetimetz", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
-     * @var datetimetz
+     * @Column(type="integer")
+     * @var int
      */
     protected $dateUpdated;
 
@@ -259,7 +259,7 @@ class fundRaiser
     }
 
     /**
-     * @return datetime
+     * @return int
      */
     public function getDateDue()
     {
@@ -267,7 +267,7 @@ class fundRaiser
     }
 
     /**
-     * @param datetime $dateDue
+     * @param int $dateDue
      */
     public function setDateDue($dateDue)
     {
@@ -275,7 +275,7 @@ class fundRaiser
     }
 
     /**
-     * @return datetime
+     * @return int
      */
     public function getDateCreated()
     {
@@ -283,7 +283,7 @@ class fundRaiser
     }
 
     /**
-     * @param datetime $dateCreated
+     * @param int $dateCreated
      */
     public function setDateCreated($dateCreated)
     {
@@ -291,7 +291,7 @@ class fundRaiser
     }
 
     /**
-     * @return datetime
+     * @return int
      */
     public function getDateUpdated()
     {
@@ -299,7 +299,7 @@ class fundRaiser
     }
 
     /**
-     * @param datetime $dateUpdated
+     * @param int $dateUpdated
      */
     public function setDateUpdated($dateUpdated)
     {
