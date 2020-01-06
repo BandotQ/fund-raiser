@@ -22,13 +22,13 @@ class fundRaiser_model
      * @Column(type="integer", nullable=true)
      * @var int
      */
-    protected $avatarId;
+    protected $photoURL;
 
     /**
      * @Column(type="integer")
      * @var int
      */
-    protected $createdBy;
+    protected $creatyByUserId;
 
     /**
      * @Column(type="float")
@@ -37,28 +37,16 @@ class fundRaiser_model
     protected $targetAmount;
 
     /**
-     * @Column(type="float", options={"default" : 0})
-     * @var float
-     */
-    protected $collectedAmount = 0;
-
-    /**
-     * @Column(type="string", length=50)
-     * @var string
-     */
-    protected $reference;
-
-    /**
      * @Column(type="string", length=300)
      * @var string
      */
-    protected $fundraiserLink;
+    protected $fundRaiserLink;
 
     /**
      * @Column(type="boolean")
      * @var bool
      */
-    protected $allowPledge;
+    protected $allowPledges;
 
     /**
      * @Column(type="string", length=300)
@@ -91,6 +79,12 @@ class fundRaiser_model
     protected $dateUpdated;
 
     /**
+     * @Column(type="integer")
+     * @var int
+     */
+    protected $dateDeleted = 0;
+
+    /**
      * @return int
      */
     public function getId()
@@ -117,23 +111,23 @@ class fundRaiser_model
     /**
      * @return mixed
      */
-    public function getAvatarId()
+    public function getPhotoURL()
     {
-        return $this->avatarId;
+        return $this->photoURL;
     }
 
     /**
-     * @param mixed $avatarId
+     * @param mixed $photoURL
      */
-    public function setAvatarId($avatarId)
+    public function setPhotoURL($photoURL)
     {
-        $this->avatarId = $avatarId;
+        $this->photoURL = $photoURL;
     }
 
     /**
      * @return int
      */
-    public function getCreatedBy(): int
+    public function getCreatyByUserId(): int
     {
         return $this->createdBy;
     }
@@ -141,7 +135,7 @@ class fundRaiser_model
     /**
      * @param int $createdBy
      */
-    public function setCreatedBy(int $createdBy)
+    public function setCreatyByUserId(int $createdBy)
     {
         $this->createdBy = $createdBy;
     }
@@ -163,38 +157,6 @@ class fundRaiser_model
     }
 
     /**
-     * @return float
-     */
-    public function getCollectedAmount()
-    {
-        return $this->collectedAmount;
-    }
-
-    /**
-     * @param float $collectedAmount
-     */
-    public function setCollectedAmount($collectedAmount)
-    {
-        $this->collectedAmount = $collectedAmount;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReference()
-    {
-        return $this->reference;
-    }
-
-    /**
-     * @param string $reference
-     */
-    public function setReference($reference)
-    {
-        $this->reference = $reference;
-    }
-
-    /**
      * @return string
      */
     public function getFundraiserLink()
@@ -213,17 +175,17 @@ class fundRaiser_model
     /**
      * @return boolean
      */
-    public function getAllowPledge()
+    public function getAllowPledges()
     {
-        return $this->allowPledge;
+        return $this->allowPledges;
     }
 
     /**
      * @param boolena $allowPledge
      */
-    public function setAllowPledge($allowPledge)
+    public function setAllowPledge($allowPledges)
     {
-        $this->allowPledge = $allowPledge;
+        $this->allowPledges = $allowPledges;
     }
 
     /**
@@ -304,5 +266,21 @@ class fundRaiser_model
     public function setDateUpdated($dateUpdated)
     {
         $this->dateUpdated = $dateUpdated;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDateDeleted()
+    {
+        return $this->dateDeleted;
+    }
+
+    /**
+     * @param int $dateDeleted
+     */
+    public function setDateDeleted($dateDeleted)
+    {
+        $this->dateDeleted = $dateDeleted;
     }
 }

@@ -3,7 +3,7 @@
 /**
  * @Entity @Table(name="fundRaiserCollections")
  */
-class fundRaiserCollections
+class fundRaiserCollections_model
 {
 
     /**
@@ -16,7 +16,7 @@ class fundRaiserCollections
      * @Column(type="integer", nullable=true)
      * @var int
      */
-    protected $paymentId;
+    protected $transactionId;
 
     /**
      * @Column(type="integer")
@@ -28,13 +28,13 @@ class fundRaiserCollections
      * @Column(type="integer")
      * @var int
      */
-    protected $collectionFrom;
+    protected $userId;
 
     /**
      * @Column(type="float")
      * @var float
      */
-    protected $amountCollected;
+    protected $amount;
 
     /**
      * @Column(type="string", length=10)
@@ -61,6 +61,12 @@ class fundRaiserCollections
     protected $dateUpdated;
 
     /**
+     * @Column(type="integer")
+     * @var int
+     */
+    protected $dateDeleted = 0;
+
+    /**
      * @return int
      */
     public function getId()
@@ -71,17 +77,17 @@ class fundRaiserCollections
     /**
      * @return int
      */
-    public function getPaymentId(): int
+    public function getTransactionId(): int
     {
-        return $this->paymentId;
+        return $this->transactionId;
     }
 
     /**
-     * @param int $paymentId
+     * @param int $transactionId
      */
-    public function setPaymentId(int $paymentId)
+    public function setTransactionId(int $transactionId)
     {
-        $this->paymentId = $paymentId;
+        $this->transactionId = $transactionId;
     }
 
     /**
@@ -103,33 +109,33 @@ class fundRaiserCollections
     /**
      * @return int
      */
-    public function getCollectionFrom(): int
+    public function getUserId(): int
     {
-        return $this->collectionFrom;
+        return $this->userId;
     }
 
     /**
-     * @param int $collectionFrom
+     * @param int $userId
      */
-    public function setCollectionFrom(int $collectionFrom)
+    public function setUserId(int $userId)
     {
-        $this->collectionFrom = $collectionFrom;
+        $this->userId = $userId;
     }
 
     /**
      * @return float
      */
-    public function getAmountCollected()
+    public function getAmount()
     {
-        return $this->amountCollected;
+        return $this->amount;
     }
 
     /**
-     * @param float $amountCollected
+     * @param float $amount
      */
-    public function setAmountCollected($amountCollected)
+    public function setAmount($amount)
     {
-        $this->amountCollected = $amountCollected;
+        $this->amount = $amount;
     }
 
     /**
@@ -194,5 +200,21 @@ class fundRaiserCollections
     public function setDateUpdated($dateUpdated)
     {
         $this->dateUpdated = $dateUpdated;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDateDeleted()
+    {
+        return $this->dateDeleted;
+    }
+
+    /**
+     * @param int $dateDeleted
+     */
+    public function setDateDeleted($dateDeleted)
+    {
+        $this->dateDeleted = $dateDeleted;
     }
 }
