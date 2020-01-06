@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // $config['base_url'] = 'http://localhost/banq/fund-raiser/';
-$config['base_url'] = 'https://ae7a6ad1.ngrok.io/banq/fund-raiser/';
+$config['base_url'] = 'http://40411b97.ngrok.io/banq/fund-raiser/';
 
 $config['index_page'] = '';
 

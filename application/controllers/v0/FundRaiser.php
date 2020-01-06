@@ -7,8 +7,6 @@ class FundRaiser extends CI_Controller {
 	{
 		parent::__construct();
 
-		$this->load->database();
-
 		$this->load->library('services/RequestHandlingService');
 		$this->requestService = new RequestHandlingService();
 
