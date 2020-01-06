@@ -30,6 +30,35 @@ class FundRaiser extends CI_Controller {
 
         $processedRequest = $this->fundraiserService->createFundRaiser($convertedRequest);
 
-        $data = $this->fundraiserRepo->addFundRaiser($processedRequest);
+        $id = $this->fundraiserRepo->addFundRaiser($processedRequest);
+        $data = $this->fundraiserRepo->getFundRaiser($id);
+        print_r($data);
+    }
+
+    /**
+     * Get fundraiser
+     * @return Response
+     */
+    public function getFundraiser()
+    {
+        $requestData = $this->input->raw_input_stream;
+        $convertedRequest = $this->requestService->toArray($requestData);
+
+        $id = $this->fundraiserRepo->getFundRaiser($convertedRequest['id']);
+        print_r($id);
+    }
+
+    /**
+     * Update fundraiser
+     * @return Response
+     */
+    public function updateFundraiser($id)
+    {
+        $requestData = $this->input->raw_input_stream;
+        $convertedRequest = $this->requestService->toArray($requestData);
+
+        $processedRequest = $this->fundraiserService->updateFundRaiser($convertedRequest);
+
+        $id = $this->fundraiserRepo->updateFundRaiser($processedRequest, $id);
     }
 }

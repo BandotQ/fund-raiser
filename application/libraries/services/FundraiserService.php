@@ -31,6 +31,23 @@ class FundraiserService
 	}
 
 	/**
+     * Process data to update a fundraise
+     * @param array
+     * @return array
+     */
+	public function updateFundRaiser($request)
+	{
+		return array(
+			'title' => $request['title'],
+			'targetAmount' => (int)$request['targetAmount'],
+			'allowPledge' => (int)$request['allowPledge'],
+			'description' => $request['description'],
+			'status' => $request['status'],
+			'dateDue' => strtotime($request['dateDue'])
+		);
+	}
+
+	/**
      * Generate fundraise reference
      * @return string
      */
